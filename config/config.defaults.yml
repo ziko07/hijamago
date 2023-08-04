@@ -358,7 +358,7 @@ default: &default_settings
 
   # Default Google Maps API key for communities that don't specify one
   # Default is not to use Google Maps API key
-  google_maps_key:
+  google_maps_key: AIzaSyD0ezZc1hbi6U2jKSM7HSeqwxqHaa8_trQ
 
   # Default Google Maps Static API signing secret. Used in combination with the
   # API key set above. See
@@ -399,7 +399,7 @@ default: &default_settings
   clp_static_released_version: 3
 
   # Default caching time for custom landing pages in seconds
-  clp_cache_time: 10
+  clp_cache_time: 1
 
   # Display mention of custom landing page in admin panel
   show_landing_page_admin: true
