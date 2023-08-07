@@ -144,7 +144,7 @@ Rails.application.configure do
   # We don't need schema dumps in this environment
   config.active_record.dump_schema_after_migration = false
 
-  config.active_storage.service = APP_CONFIG.active_storage_service.to_sym
+  config.active_storage.service = :local
 
   # List of classes deemed safe to be deserialized from YAML.
   config.active_record.yaml_column_permitted_classes = [Symbol, ActiveSupport::HashWithIndifferentAccess]

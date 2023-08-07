@@ -20,7 +20,7 @@ server '54.89.225.60',
 set :rvm_ruby_version, '3.2.2'
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/application.yml config/database.yml config/secrets.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets public/uploads pdf_files public/cash_pulls public/closed_tills public/invoices}
