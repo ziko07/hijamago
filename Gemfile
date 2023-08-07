@@ -136,14 +136,14 @@ group :development do
   gem 'zeus', require: false
   # gem 'web-console'
   gem 'awesome_print', '~> 1.9.2'
-  gem 'capistrano',         '~> 3.9.1', require: false
-  gem 'capistrano-bundler', '~> 1.2.0', require: false
-  gem 'capistrano-rails',   '~> 1.3.0', require: false
-  gem 'capistrano-rvm',     '~> 0.1.1', require: false
-  gem 'capistrano-npm',     '~> 1.0.2', require: false
-  gem 'capistrano-nvm',     '~> 0.0.7', require: false
-  gem 'capistrano-delayed-job', '~> 1.0', require: false
-  gem 'capistrano-env', '~> 0.3', require: false
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-npm'
+  gem 'capistrano-nvm'
+  gem 'capistrano-delayed-job'
+  # gem 'capistrano-env'
 end
 
 group :test do

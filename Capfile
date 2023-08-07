@@ -4,12 +4,11 @@ require 'capistrano/setup'
 # Include default deployment tasks
 require 'capistrano/deploy'
 require 'capistrano/bundler'
-require 'capistrano/passenger'
 #require 'capistrano/rails'
 require 'capistrano/bundler'
-#require 'capistrano/rails/assets'
+require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
-require "whenever/capistrano"
+
 require 'capistrano/delayed_job'
 # Include tasks from other gems included in your Gemfile
 #
