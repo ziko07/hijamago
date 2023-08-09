@@ -13,7 +13,7 @@ set :scm, :git
 
 # Default value for :pty is false
 # set :pty, true
-server '54.89.225.60',
+server '52.23.229.255',
        :user => 'deployer',
        :roles => %w{web app db}
 
@@ -42,44 +42,44 @@ namespace :deploy do
   #after 'deploy:setup_config', 'monit:restart'
   #after 'deploy:publishing', 'deploy:restart'
 
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      execute :touch, release_path.join('tmp/restart.txt')
-    end
-  end
+  # desc 'Restart application'
+  # task :restart do
+  #   on roles(:app), in: :sequence, wait: 5 do
+  #     # Your restart mechanism here, for example:
+  #     execute :touch, release_path.join('tmp/restart.txt')
+  #   end
+  # end
 
-  after :publishing, :restart
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
+  # after :publishing, :restart
+  #
+  # after :restart, :clear_cache do
+  #   on roles(:web), in: :groups, limit: 3, wait: 10 do
+  #     # Here we can do anything such as:
+  #     # within release_path do
+  #     #   execute :rake, 'cache:clear'
+  #     # end
+  #   end
+  # end
 end
 
-task :upload_secret_files do
-  on roles(:all) do |host|
-    begin
-      execute "mkdir #{shared_path}/config"
-    rescue
-    end
-    upload! "config/application.yml", "#{shared_path}/config/application.yml"
-  end
-end
+# task :upload_secret_files do
+#   on roles(:all) do |host|
+#     begin
+#       execute "mkdir #{shared_path}/config"
+#     rescue
+#     end
+#     upload! "config/application.yml", "#{shared_path}/config/application.yml"
+#   end
+# end
 
-desc 'Invoke a rake command on the remote server'
-task :invoke, [:command] => 'deploy:set_rails_env' do |task, args|
-  on primary(:app) do
-    within current_path do
-      with :rails_env => fetch(:rails_env) do
-        rake args[:command]
-      end
-    end
-  end
-end
+# desc 'Invoke a rake command on the remote server'
+# task :invoke, [:command] => 'deploy:set_rails_env' do |task, args|
+#   on primary(:app) do
+#     within current_path do
+#       with :rails_env => fetch(:rails_env) do
+#         rake args[:command]
+#       end
+#     end
+#   end
+# end
 

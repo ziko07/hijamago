@@ -23,10 +23,7 @@ module CurrentMarketplaceResolver
   # private
 
   def sole_community_or(&block)
-    community_count = Rails.cache.fetch("ccount", expires_in: 5.minutes) do
-      Community.count
-    end
-    if community_count == 1
+    if Community.count == 1
       Community.first
     else
       block.call
