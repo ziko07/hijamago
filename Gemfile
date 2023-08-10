@@ -203,3 +203,4 @@ gem 'fast-polylines', '~> 2.2.2'
 gem 'rb-inotify', '~> 0.10', require: false
 gem 'psych', '< 4'
 gem 'sorted_set'
+gem 'daemons'
