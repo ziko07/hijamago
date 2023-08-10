@@ -53,44 +53,44 @@ Rails.application.configure do
 
   config.log_level = :info
   # Basic log config, for calls to Rails.logger.<level> { <message> }
-  config.logger = ::Logger.new(STDOUT)
+  # config.logger = ::Logger.new(STDOUT)
   # Formats log entries into: LEVEL MESSAGE
   # Heroku adds to this timestamp and worker/dyno id, so datetime can be stripped
-  config.logger.formatter = ->(severity, datetime, progname, msg) { "#{severity} #{msg}\n" }
+  # config.logger.formatter = ->(severity, datetime, progname, msg) { "#{severity} #{msg}\n" }
 
   # Lograge config, overrides default instrumentation for logging ActionController and ActionView logging
-  config.lograge.enabled = true
-  config.lograge.custom_options = ->(event) {
-    params = event.payload[:params].except('controller', 'action')
+  # config.lograge.enabled = true
+  # config.lograge.custom_options = ->(event) {
+  #   params = event.payload[:params].except('controller', 'action')
+  #
+  #   { params: params,
+  #     host: event.payload[:host],
+  #     community_id: event.payload[:community_id],
+  #     current_user_id: event.payload[:current_user_id],
+  #     user_agent: event.payload[:user_agent],
+  #     referer: event.payload[:referer],
+  #     forwarded_for: event.payload[:forwarded_for],
+  #     request_uuid: event.payload[:request_uuid] }
+  # }
 
-    { params: params,
-      host: event.payload[:host],
-      community_id: event.payload[:community_id],
-      current_user_id: event.payload[:current_user_id],
-      user_agent: event.payload[:user_agent],
-      referer: event.payload[:referer],
-      forwarded_for: event.payload[:forwarded_for],
-      request_uuid: event.payload[:request_uuid] }
-  }
+  # config.lograge.formatter = Lograge::Formatters::Json.new
 
-  config.lograge.formatter = Lograge::Formatters::Json.new
-
-  config.after_initialize do
-    ActiveRecord::Base.logger = Rails.logger.clone
-    ActiveRecord::Base.logger.level = Logger::INFO
-    ActionMailer::Base.logger = Rails.logger.clone
-    ActionMailer::Base.logger.level = Logger::INFO
-  end
+  # config.after_initialize do
+  #   ActiveRecord::Base.logger = Rails.logger.clone
+  #   ActiveRecord::Base.logger.level = Logger::INFO
+  #   ActionMailer::Base.logger = Rails.logger.clone
+  #   ActionMailer::Base.logger.level = Logger::INFO
+  # end
 
   # Use Redis
-  config.cache_store = [:redis_cache_store, {
-                          driver: :hiredis,
-                          namespace: ENV["redis_cache_namespace"] || "cache",
-                          compress: true,
-                          timeout: 1,
-                          url: "redis://#{ENV["redis_host"]}:#{ENV["redis_port"]}/#{ENV["redis_db"]}",
-                          expires_in: ENV["redis_expires_in"] || 240 # default, 4 hours in minutes
-                        }]
+  # config.cache_store = [:redis_cache_store, {
+  #                         driver: :hiredis,
+  #                         namespace: ENV["redis_cache_namespace"] || "cache",
+  #                         compress: true,
+  #                         timeout: 1,
+  #                         url: "redis://#{ENV["redis_host"]}:#{ENV["redis_port"]}/#{ENV["redis_db"]}",
+  #                         expires_in: ENV["redis_expires_in"] || 240 # default, 4 hours in minutes
+  #                       }]
 
   # Compress JavaScript and CSS
   config.assets.js_compressor = Uglifier.new(harmony: true)
@@ -139,7 +139,7 @@ Rails.application.configure do
   ActionMailer::Base.perform_deliveries = true # the "deliver_*" methods are available
 
   # Send deprecation notices to registered listeners.
-  config.active_support.deprecation = :log
+  # config.active_support.deprecation = :log
 
   # We don't need schema dumps in this environment
   config.active_record.dump_schema_after_migration = false
